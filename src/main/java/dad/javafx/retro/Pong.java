@@ -1,6 +1,7 @@
 package dad.javafx.retro;
 
 import java.util.Random;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -17,13 +18,14 @@ import javafx.util.Duration;
 	public class Pong extends Application {
 		
 		//variables
-		private static final int width = 1900;
-		private static final int height = 1000;
+		private static final int width = 800;
+		private static final int height = 600;
+		//App.height;
 		private static final int PLAYER_HEIGHT = 200;
 		private static final int PLAYER_WIDTH = 20;
 		private static final double BALL_R = 40;
-		private int ballYSpeed = 4;
-		private int ballXSpeed = 4;
+		private int ballYSpeed = 10;
+		private int ballXSpeed = 10;
 		private double playerOneYPos = height / 2;
 		private double playerTwoYPos = height / 2;
 		private double ballXPos = width / 2;
@@ -42,7 +44,7 @@ import javafx.util.Duration;
 			GraphicsContext gc = canvas.getGraphicsContext2D();
 			
 			//Frame por segundos
-			Timeline tl = new Timeline(new KeyFrame(Duration.millis(5), e -> run(gc)));
+			Timeline tl = new Timeline(new KeyFrame(Duration.millis(50), e -> run(gc)));
 			//number of cycles in animation INDEFINITE = repeat indefinitely
 			tl.setCycleCount(Timeline.INDEFINITE);
 			
@@ -50,9 +52,11 @@ import javafx.util.Duration;
 			canvas.setOnMouseMoved(e ->  playerOneYPos  = e.getY());
 			
 			canvas.setOnMouseClicked(e ->  gameStarted = true);
+			
 			stage.setScene(new Scene(new StackPane(canvas)));
 			stage.show();
 			tl.play();
+			
 		}
 
 		private void run(GraphicsContext gc) {
@@ -90,8 +94,8 @@ import javafx.util.Duration;
 				ballYPos = height / 2;
 				
 				//Reseteo de speed de la pelota
-				ballXSpeed = new Random().nextInt(4) == 0 ? 1: -1;
-				ballYSpeed = new Random().nextInt(4) == 0 ? 1: -1;
+				ballXSpeed = new Random().nextInt(8) == 0 ? 1: -1;
+				ballYSpeed = new Random().nextInt(8) == 0 ? 1: -1;
 			}
 			
 			//makes sure the ball stays in the canvas

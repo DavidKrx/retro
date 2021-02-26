@@ -42,7 +42,7 @@ public class Pong2 extends Application {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		
 		//JavaFX Timeline = free form animation defined by KeyFrames and their duration 
-		Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
+		Timeline tl = new Timeline(new KeyFrame(Duration.millis(4), e -> run(gc)));
 		//number of cycles in animation INDEFINITE = repeat indefinitely
 		tl.setCycleCount(Timeline.INDEFINITE);
 		
@@ -111,10 +111,13 @@ public class Pong2 extends Application {
 		//increase the speed after the ball hits the player
 		if( ((ballXPos + BALL_R > playerTwoXPos) && ballYPos >= playerTwoYPos && ballYPos <= playerTwoYPos + PLAYER_HEIGHT) || 
 			((ballXPos < playerOneXPos + PLAYER_WIDTH) && ballYPos >= playerOneYPos && ballYPos <= playerOneYPos + PLAYER_HEIGHT)) {
-			ballYSpeed += 1 * Math.signum(ballYSpeed);
-			ballXSpeed += 1 * Math.signum(ballXSpeed);
+			//ballYSpeed += 1 * Math.signum(ballYSpeed);
+			//ballXSpeed += 1 * Math.signum(ballXSpeed);
 			ballXSpeed *= -1;
-			ballYSpeed *= -1;
+			//ballYSpeed *= 1;
+			
+			//ballSpeed += 1 * Math.signum(ballSpeed);
+			//ballXSpeed *= -1;
 		}
 		
 		//draw score
